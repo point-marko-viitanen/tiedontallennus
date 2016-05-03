@@ -4,9 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WpfHarjoituspoistettava
+namespace XML
 {
-    class Car
+    class Program
     {
+        static void Main(string[] args)
+        {
+        }
     }
 }
