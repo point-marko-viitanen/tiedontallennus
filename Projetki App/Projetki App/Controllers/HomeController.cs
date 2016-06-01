@@ -10,6 +10,7 @@ namespace Projetki_App.Controllers
     {
         public ActionResult Index()
         {
+            ViewBag.TestiViesti = "Tämä on testiä.";
             return View();
         }
 
