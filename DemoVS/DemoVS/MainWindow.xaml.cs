@@ -24,5 +24,11 @@ namespace DemoVS
         {
             InitializeComponent();
         }
+
+        private void btnLuoAutot_Click(object sender, RoutedEventArgs e)
+        {
+            Car Auto1 = new Car();
+            
+        }
     }
 }

@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ProjektiModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Henkilot">
+          <Key>
+            <PropertyRef Name="Henkilo_id" />
+          </Key>
+          <Property Name="Henkilo_id" Type="int" Nullable="false" />
+          <Property Name="Etunimi" Type="nvarchar" MaxLength="255" />
+          <Property Name="Sukunimi" Type="nvarchar" MaxLength="255" />
+          <Property Name="Osoite" Type="nvarchar" MaxLength="255" />
+          <Property Name="Esimies" Type="float" />
+        </EntityType>
+        <EntityType Name="Projektit">
+          <Key>
+            <PropertyRef Name="Projekti_id" />
+          </Key>
+          <Property Name="Nimi" Type="nvarchar" MaxLength="255" />
+          <Property Name="Projekti_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tunnit">
+          <Key>
+            <PropertyRef Name="Tunti_id" />
+          </Key>
+          <Property Name="Tunti_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Projekti_id" Type="int" Nullable="false" />
+          <Property Name="Henkilo_id" Type="int" Nullable="false" />
+          <Property Name="Pvm" Type="date" Nullable="false" />
+          <Property Name="Tunnit" Type="nchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="ProjektiModelStoreContainer">
+          <EntitySet Name="Henkilot" EntityType="Self.Henkilot" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Projektit" EntityType="Self.Projektit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tunnit" EntityType="Self.Tunnit" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ProjektiModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Henkilot">
+          <Key>
+            <PropertyRef Name="Henkilo_id" />
+          </Key>
+          <Property Name="Henkilo_id" Type="Int32" Nullable="false" />
+          <Property Name="Etunimi" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Sukunimi" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Osoite" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Esimies" Type="Double" />
+        </EntityType>
+        <EntityType Name="Projektit">
+          <Key>
+            <PropertyRef Name="Projekti_id" />
+          </Key>
+          <Property Name="Nimi" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Projekti_id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tunnit">
+          <Key>
+            <PropertyRef Name="Tunti_id" />
+          </Key>
+          <Property Name="Tunti_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Projekti_id" Type="Int32" Nullable="false" />
+          <Property Name="Henkilo_id" Type="Int32" Nullable="false" />
+          <Property Name="Pvm" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Tunnit1" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="ProjektiEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Henkilot" EntityType="Self.Henkilot" />
+          <EntitySet Name="Projektit" EntityType="Self.Projektit" />
+          <EntitySet Name="Tunnit" EntityType="Self.Tunnit" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ProjektiModelStoreContainer" CdmEntityContainer="ProjektiEntities">
+          <EntitySetMapping Name="Henkilot">
+            <EntityTypeMapping TypeName="ProjektiModel.Henkilot">
+              <MappingFragment StoreEntitySet="Henkilot">
+                <ScalarProperty Name="Henkilo_id" ColumnName="Henkilo_id" />
+                <ScalarProperty Name="Etunimi" ColumnName="Etunimi" />
+                <ScalarProperty Name="Sukunimi" ColumnName="Sukunimi" />
+                <ScalarProperty Name="Osoite" ColumnName="Osoite" />
+                <ScalarProperty Name="Esimies" ColumnName="Esimies" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Projektit">
+            <EntityTypeMapping TypeName="ProjektiModel.Projektit">
+              <MappingFragment StoreEntitySet="Projektit">
+                <ScalarProperty Name="Nimi" ColumnName="Nimi" />
+                <ScalarProperty Name="Projekti_id" ColumnName="Projekti_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tunnit">
+            <EntityTypeMapping TypeName="ProjektiModel.Tunnit">
+              <MappingFragment StoreEntitySet="Tunnit">
+                <ScalarProperty Name="Tunti_id" ColumnName="Tunti_id" />
+                <ScalarProperty Name="Projekti_id" ColumnName="Projekti_id" />
+                <ScalarProperty Name="Henkilo_id" ColumnName="Henkilo_id" />
+                <ScalarProperty Name="Pvm" ColumnName="Pvm" />
+                <ScalarProperty Name="Tunnit1" ColumnName="Tunnit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
