@@ -32,6 +32,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
+            <a href="#"><span class="glyphicon glyphicon-plus näytäProjektitNappi"></span></a>
             @Html.DisplayFor(modelItem => item.Henkilo_id)
         </td>
         <td>
@@ -52,6 +53,11 @@
             @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
         </td>
     </tr>
+    <tr style="display: none;">
+        <td>&nbsp;</td>
+        <td>Testi...</td>
+    </tr>
+
 }
 
 </table>
