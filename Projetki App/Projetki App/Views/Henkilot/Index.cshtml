@@ -3,6 +3,20 @@
 @{
     ViewBag.Title = "Index";
 }
+@section scripts {
+<script src="~/scripts/jquery-1.10.2.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $(".näytäProjektitNappi").click(function() {
+                //alert("Nappia painettu!");
+                var p1 = $(this).parent();
+                alert(p1);
+                $(this).parent().parent().next().css("display", " block");
+            });
+        });
+        </script>
+}
+
 
 <h2>Index</h2>
 
