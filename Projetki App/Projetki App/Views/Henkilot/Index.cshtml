@@ -7,14 +7,14 @@
 <script src="~/scripts/jquery-1.10.2.js"></script>
     <script type="text/javascript">
         $(function () {
-            $(".näytäProjektitNappi").click(function() {
+            $(".näytäProjektitNappi").click(function () {
                 //alert("Nappia painettu!");
-                var p1 = $(this).parent();
-                alert(p1);
-                $(this).parent().parent().next().css("display", " block");
+                var henkilo_Id = $(this).data("henkiloid");            
+                //alert(henkiloId);
+                $("#Henkilot_" + henkilo_Id).css("display", "block");
             });
         });
-        </script>
+     </script>
 }
 
 
@@ -46,7 +46,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            <a href="#"><span class="glyphicon glyphicon-plus näytäProjektitNappi"></span></a>
+            <a href="#"><span data-henkiloid ="@Html.DisplayFor(modelItem => item.Henkilo_id)" class="glyphicon glyphicon-plus näytäProjektitNappi"></span></a>
             @Html.DisplayFor(modelItem => item.Henkilo_id)
         </td>
         <td>
@@ -67,7 +67,7 @@
             @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
         </td>
     </tr>
-    <tr style="display: none;">
+    <tr style="display: none;" id="Henkilot_@Html.DisplayFor(modelItem => item.Henkilo_id)">
         <td>&nbsp;</td>
         <td>Testi...</td>
     </tr>
